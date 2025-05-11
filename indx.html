@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarthi Bike Booking</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBUd0pyl-A6WlCLvT0WqsflGg-lT4bDnI&libraries=places" async defer></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>Sarthi Bike Booking</h1>
+    <p class="purpose">Book Your Bike Ride in Your Gaon! 🏍️</p>
+    <p class="tagline">Sarthi Hai, Tension Nahi!</p>
+  </header>
+  <div class="container">
+    <form id="bookingForm">
+      <label for="manualLocation">Enter Location Manually?</label>
+      <div class="manual-location">
+        <input type="checkbox" id="manualLocation" onchange="toggleLocationInputs()">
+        <label for="manualLocation">Yes, I want to enter manually</label>
+      </div>
+
+      <label for="pickup">Pickup Location</label>
+      <input type="text" id="pickup" placeholder="Enter pickup location" required>
+
+      <label for="dropoff">Drop-off Location</label>
+      <input type="text" id="dropoff" placeholder="Enter drop-off location" required>
+
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="Enter your phone number" required>
+
+      <button type="button" onclick="calculatePrice()">Calculate Price</button>
+      <p id="price" class="price" style="display: none;"></p>
+
+      <button type="submit">Confirm Booking</button>
+    </form>
+    <p id="success" class="success" style="display: none;">
+      Booking submitted! Your details have been shared with our riders in the Instagram group.<br>
+      A rider will call you soon to confirm your ride.<br>
+      <span id="paymentInstruction">Please pay the rider via QR code or online after the ride.</span>
+    </p>
+    <div id="actionButtons" class="action-buttons" style="display: none;">
+      <button id="chatButton" onclick="redirectToInstagram()">Join Instagram Group</button>
+      <button id="whatsappButton" onclick="redirectToWhatsApp()">Chat on WhatsApp</button>
+    </div>
+  </div>
+
+  <!-- Price Popup -->
+  <div id="pricePopup" class="popup" style="display: none;">
+    <div class="popup-content">
+      <h2>Price Information</h2>
+      <p>Since you entered the location manually, we cannot calculate the price right now. The price will be shared by the rider after confirming your booking.</p>
+      <button onclick="closePopup()">OK</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
