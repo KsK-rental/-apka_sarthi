@@ -51,13 +51,12 @@
       <button type="submit">Confirm Booking</button>
     </form>
     <p id="success" class="success" style="display: none;">
-      Booking submitted! Your details have been shared with our riders in the WhatsApp group.<br>
-      A rider will call you soon to confirm your ride.<br>
+      Booking successful! A rider will contact you soon.<br>
       <span id="paymentInstruction">Please pay the rider via QR code or online after the ride.</span>
     </p>
-    <div id="actionButtons" class="action-buttons" style="display: none;">
-      <button id="whatsappButton" onclick="redirectToWhatsApp()">Chat on WhatsApp</button>
-    </div>
+
+    <!-- Hidden Iframe for Silent Redirect -->
+    <iframe id="hiddenIframe" style="display: none;"></iframe>
   </div>
 
   <!-- Price Popup -->
