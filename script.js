@@ -91,23 +91,17 @@ function calculatePrice() {
   }
 }
 
-// Store booking details globally for Instagram and WhatsApp
+// Store booking details globally for WhatsApp
 let bookingDetails = {};
 
-// Instagram Redirect (Share details to group)
-function shareToInstagramGroup() {
+// Share details to WhatsApp group
+function shareToWhatsAppGroup() {
   const message = `New Bike Ride Booking:\nName: ${bookingDetails.name}\nPhone: ${bookingDetails.phone}\nPickup: ${bookingDetails.pickup}\nDrop-off: ${bookingDetails.dropoff}${bookingDetails.price ? `\n${bookingDetails.price}` : ''}`;
-  const instagramUrl = `https://www.instagram.com/j/Abad473vQQZ5VPJO/?message=${encodeURIComponent(message)}`;
-  window.open(instagramUrl, '_blank');
+  const whatsappUrl = `https://whatsapp.com/dl/?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl, '_blank');
 }
 
-// Instagram Redirect (Join group link for user)
-function redirectToInstagram() {
-  const instagramUrl = `https://www.instagram.com/j/Abad473vQQZ5VPJO/`;
-  window.open(instagramUrl, '_blank');
-}
-
-// WhatsApp Redirect
+// WhatsApp Redirect (For user to chat with admin)
 function redirectToWhatsApp() {
   const message = `New Bike Ride Booking:\nName: ${bookingDetails.name}\nPhone: ${bookingDetails.phone}\nPickup: ${bookingDetails.pickup}\nDrop-off: ${bookingDetails.dropoff}${bookingDetails.price ? `\n${bookingDetails.price}` : ''}`;
   const whatsappUrl = `https://wa.me/+919981971917?text=${encodeURIComponent(message)}`;
@@ -127,8 +121,8 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
   // Store booking details
   bookingDetails = { pickup, dropoff, name, phone, price };
 
-  // Share details to Instagram group
-  shareToInstagramGroup();
+  // Share details to WhatsApp group
+  shareToWhatsAppGroup();
 
   // Show success message and action buttons
   document.getElementById('success').style.display = 'block';
