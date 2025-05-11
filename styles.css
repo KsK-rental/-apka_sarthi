@@ -215,23 +215,9 @@ button:active {
   color: #1f2937;
 }
 
-.action-buttons {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-  justify-content: center;
-}
-
-#whatsappButton {
-  background: linear-gradient(90deg, #25d366 0%, #2ed573 100%);
-  width: auto;
-  padding: 10px 20px;
-}
-
-#whatsappButton:hover {
-  background: linear-gradient(90deg, #2ed573 0%, #25d366 100%);
-  transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+/* Hidden Iframe */
+#hiddenIframe {
+  display: none;
 }
 
 /* Popup Styling */
