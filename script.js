@@ -91,23 +91,6 @@ function calculatePrice() {
   }
 }
 
-// Store booking details globally for WhatsApp
-let bookingDetails = {};
-
-// Share details to WhatsApp group
-function shareToWhatsAppGroup() {
-  const message = `New Bike Ride Booking:\nName: ${bookingDetails.name}\nPhone: ${bookingDetails.phone}\nPickup: ${bookingDetails.pickup}\nDrop-off: ${bookingDetails.dropoff}${bookingDetails.price ? `\n${bookingDetails.price}` : ''}`;
-  const whatsappUrl = `https://whatsapp.com/dl/?text=${encodeURIComponent(message)}`;
-  window.open(whatsappUrl, '_blank');
-}
-
-// WhatsApp Redirect (For user to chat with admin)
-function redirectToWhatsApp() {
-  const message = `New Bike Ride Booking:\nName: ${bookingDetails.name}\nPhone: ${bookingDetails.phone}\nPickup: ${bookingDetails.pickup}\nDrop-off: ${bookingDetails.dropoff}${bookingDetails.price ? `\n${bookingDetails.price}` : ''}`;
-  const whatsappUrl = `https://wa.me/+919981971917?text=${encodeURIComponent(message)}`;
-  window.open(whatsappUrl, '_blank');
-}
-
 // Form Submission
 document.getElementById('bookingForm').addEventListener('submit', function(event) {
   event.preventDefault();
@@ -118,15 +101,19 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
   const phone = document.getElementById('phone').value;
   const price = document.getElementById('price').textContent;
 
-  // Store booking details
-  bookingDetails = { pickup, dropoff, name, phone, price };
+  // Prepare booking details
+  const bookingDetails = { pickup, dropoff, name, phone, price };
 
-  // Share details to WhatsApp group
-  shareToWhatsAppGroup();
+  // Prepare WhatsApp message
+  const message = `New Bike Ride Booking:\nName: ${bookingDetails.name}\nPhone: ${bookingDetails.phone}\nPickup: ${bookingDetails.pickup}\nDrop-off: ${bookingDetails.dropoff}${bookingDetails.price ? `\n${bookingDetails.price}` : ''}`;
+  const whatsappUrl = `https://wa.me/+919981971917?text=${encodeURIComponent(message)}`;
 
-  // Show success message and action buttons
+  // Use hidden iframe to silently trigger WhatsApp link
+  const iframe = document.getElementById('hiddenIframe');
+  iframe.src = whatsappUrl;
+
+  // Show success message
   document.getElementById('success').style.display = 'block';
-  document.getElementById('actionButtons').style.display = 'flex';
   document.getElementById('bookingForm').reset();
   document.getElementById('price').style.display = 'none';
   document.getElementById('manualLocation').checked = false;
