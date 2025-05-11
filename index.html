@@ -14,6 +14,17 @@
     <p class="purpose">Book Your Bike Ride in Your Gaon! 🏍️</p>
     <p class="tagline">Sarthi Hai, Tension Nahi!</p>
   </header>
+
+  <!-- Animated Section -->
+  <div class="animation-section">
+    <div class="bike-animation">
+      <div class="rider"></div>
+      <div class="passenger"></div>
+      <div class="bike"></div>
+      <div class="road"></div>
+    </div>
+  </div>
+
   <div class="container">
     <form id="bookingForm">
       <label for="manualLocation">Enter Location Manually?</label>
@@ -40,12 +51,11 @@
       <button type="submit">Confirm Booking</button>
     </form>
     <p id="success" class="success" style="display: none;">
-      Booking submitted! Your details have been shared with our riders in the Instagram group.<br>
+      Booking submitted! Your details have been shared with our riders in the WhatsApp group.<br>
       A rider will call you soon to confirm your ride.<br>
       <span id="paymentInstruction">Please pay the rider via QR code or online after the ride.</span>
     </p>
     <div id="actionButtons" class="action-buttons" style="display: none;">
-      <button id="chatButton" onclick="redirectToInstagram()">Join Instagram Group</button>
       <button id="whatsappButton" onclick="redirectToWhatsApp()">Chat on WhatsApp</button>
     </div>
   </div>
