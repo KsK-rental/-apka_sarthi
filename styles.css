@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;600;700&display=swap');
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+  background: linear-gradient(135deg, #00ff87 0%, #ff4d00 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,30 +18,103 @@ body {
 }
 
 .header h1 {
-  color: #d00000;
+  color: #ff4d00;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 36px;
+  font-size: 40px;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  background: linear-gradient(90deg, #d00000, #ff9f43);
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, #ff4d00, #00ff87);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: fadeIn 1s ease-in-out;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .purpose {
   color: #1f2937;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 500;
   margin: 10px 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .tagline {
-  color: #d00000;
-  font-size: 20px;
-  font-weight: 600;
+  color: #ff4d00;
+  font-size: 22px;
+  font-weight: 700;
   margin: 0;
   animation: slideIn 1s ease-in-out;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation Section */
+.animation-section {
+  width: 100%;
+  max-width: 600px;
+  height: 150px;
+  position: relative;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.bike-animation {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.road {
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+  height: 10px;
+  background: linear-gradient(90deg, #333 50%, transparent 50%);
+  background-size: 20px 10px;
+  animation: moveRoad 1s linear infinite;
+}
+
+.bike {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 80px;
+  height: 40px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><circle cx="20" cy="40" r="15" fill="black"/><circle cx="80" cy="40" r="15" fill="black"/><rect x="20" y="20" width="60" height="10" fill="orange"/><rect x="40" y="10" width="20" height="10" fill="orange"/></svg>') no-repeat center;
+  background-size: contain;
+  animation: moveBike 3s linear infinite;
+}
+
+.rider {
+  position: absolute;
+  bottom: 35px;
+  left: 20px;
+  width: 20px;
+  height: 30px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 30"><circle cx="10" cy="5" r="5" fill="red"/><rect x="5" y="10" width="10" height="20" fill="red"/></svg>') no-repeat center;
+  background-size: contain;
+  animation: moveBike 3s linear infinite;
+}
+
+.passenger {
+  position: absolute;
+  bottom: 35px;
+  left: 40px;
+  width: 20px;
+  height: 30px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 30"><circle cx="10" cy="5" r="5" fill="blue"/><rect x="5" y="10" width="10" height="20" fill="blue"/></svg>') no-repeat center;
+  background-size: contain;
+  animation: moveBike 3s linear infinite;
+}
+
+@keyframes moveRoad {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes moveBike {
+  0% { transform: translateX(-100px); }
+  100% { transform: translateX(600px); }
 }
 
 .container {
@@ -49,14 +122,15 @@ body {
   backdrop-filter: blur(12px);
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
   width: 100%;
   max-width: 450px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .container:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
 }
 
 label {
@@ -68,7 +142,7 @@ label {
 }
 
 label:hover {
-  color: #ff9f43;
+  color: #00ff87;
 }
 
 input[type="text"],
@@ -77,14 +151,14 @@ input[type="tel"] {
   padding: 12px;
   margin-bottom: 20px;
   border: 2px solid #e5e7eb;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 16px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input:focus {
-  border-color: #ff9f43;
-  box-shadow: 0 0 8px rgba(255, 159, 67, 0.3);
+  border-color: #00ff87;
+  box-shadow: 0 0 10px rgba(0, 255, 135, 0.4);
   outline: none;
 }
 
@@ -104,19 +178,19 @@ button {
   padding: 12px;
   margin-bottom: 15px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   color: white;
-  background: linear-gradient(90deg, #d00000 0%, #ff9f43 100%);
+  background: linear-gradient(90deg, #ff4d00 0%, #00ff87 100%);
   cursor: pointer;
   transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 button:hover {
-  background: linear-gradient(90deg, #ff9f43 0%, #d00000 100%);
+  background: linear-gradient(90deg, #00ff87 0%, #ff4d00 100%);
   transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(255, 159, 67, 0.4);
+  box-shadow: 0 5px 20px rgba(0, 255, 135, 0.5);
 }
 
 button:active {
@@ -146,18 +220,6 @@ button:active {
   gap: 10px;
   margin-top: 20px;
   justify-content: center;
-}
-
-#chatButton {
-  background: linear-gradient(90deg, #ec4899 0%, #f472b6 100%);
-  width: auto;
-  padding: 10px 20px;
-}
-
-#chatButton:hover {
-  background: linear-gradient(90deg, #db2777 0%, #ec4899 100%);
-  transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
 }
 
 #whatsappButton {
@@ -198,7 +260,7 @@ button:active {
 
 .popup-content h2 {
   margin-top: 0;
-  color: #d00000;
+  color: #ff4d00;
 }
 
 .popup-content p {
@@ -207,7 +269,7 @@ button:active {
 }
 
 .popup-content button {
-  background: linear-gradient(90deg, #d00000 0%, #ff9f43 100%);
+  background: linear-gradient(90deg, #ff4d00 0%, #00ff87 100%);
   color: white;
   padding: 10px 20px;
   border: none;
@@ -217,7 +279,7 @@ button:active {
 }
 
 .popup-content button:hover {
-  background: linear-gradient(90deg, #ff9f43 0%, #d00000 100%);
+  background: linear-gradient(90deg, #00ff87 0%, #ff4d00 100%);
   transform: scale(1.05);
 }
 
